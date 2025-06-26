@@ -1,69 +1,89 @@
-# React + TypeScript + Vite
+# Sonoma UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React UI component library built with TypeScript and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install sonoma-ui
+# or
+pnpm add sonoma-ui
+# or
+yarn add sonoma-ui
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+import { Button } from "sonoma-ui";
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+function App() {
+  return (
+    <Button variant="primary" size="md" onClick={() => console.log("Clicked!")}>
+      Click me
+    </Button>
+  );
+}
 ```
+
+## Components
+
+### Button
+
+A versatile button component with multiple variants and sizes.
+
+#### Props
+
+- `variant`: `'primary' | 'secondary' | 'outline'` (default: `'primary'`)
+- `size`: `'sm' | 'md' | 'lg'` (default: `'md'`)
+- `disabled`: `boolean` (default: `false`)
+- `onClick`: `() => void`
+- `type`: `'button' | 'submit' | 'reset'` (default: `'button'`)
+- `children`: `React.ReactNode`
+
+#### Examples
+
+```tsx
+// Primary button
+<Button variant="primary">Primary Button</Button>
+
+// Secondary button
+<Button variant="secondary">Secondary Button</Button>
+
+// Outline button
+<Button variant="outline">Outline Button</Button>
+
+// Different sizes
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+
+// Disabled button
+<Button disabled>Disabled Button</Button>
+```
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Run tests
+pnpm test
+
+# Run Storybook
+pnpm storybook
+
+# Build library
+pnpm build:lib
+
+# Build for production
+pnpm build
+```
+
+## License
+
+MIT

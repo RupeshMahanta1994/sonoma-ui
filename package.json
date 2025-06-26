@@ -1,23 +1,59 @@
 {
   "name": "sonoma-ui",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
+  "description": "A modern React UI component library built with TypeScript and Tailwind CSS",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
+    "build:lib": "vite build --mode lib",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "typescript",
+    "tailwind",
+    "design-system"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/sonoma-ui.git"
+  },
+  "homepage": "https://github.com/yourusername/sonoma-ui#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/sonoma-ui/issues"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
@@ -31,6 +67,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.0.4",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",
@@ -43,10 +80,13 @@
     "globals": "^16.2.0",
     "jsdom": "^26.1.0",
     "playwright": "^1.53.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "storybook": "^9.0.13",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^5.4.19",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4"
   }
 }
