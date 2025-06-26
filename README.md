@@ -6,8 +6,8 @@ A modern React UI component library built with TypeScript and Tailwind CSS. Each
 
 This project uses a monorepo architecture with independent packages for each component:
 
-- **@sonoma-ui/button** - Button component (~969 bytes)
-- **@sonoma-ui/card** - Card component (~579 bytes)
+- **sonoma-ui-button** - Button component (~0.97 kB)
+- **sonoma-ui-card** - Card component (~0.58 kB)
 - **apps/storybook** - Component documentation and playground
 
 ## Installation
@@ -16,13 +16,13 @@ Install individual components as needed:
 
 ```bash
 # Install specific components
-pnpm add @sonoma-ui/button @sonoma-ui/card
+pnpm add sonoma-ui-button sonoma-ui-card
 
 # Or using npm
-npm install @sonoma-ui/button @sonoma-ui/card
+npm install sonoma-ui-button sonoma-ui-card
 
 # Or using yarn
-yarn add @sonoma-ui/button @sonoma-ui/card
+yarn add sonoma-ui-button sonoma-ui-card
 ```
 
 ## Usage
@@ -32,13 +32,13 @@ yarn add @sonoma-ui/button @sonoma-ui/card
 Import only the components you need for optimal bundle sizes:
 
 ```tsx
-// Import Button component - ~969 bytes
-import { Button } from "@sonoma-ui/button";
-import type { ButtonProps } from "@sonoma-ui/button";
+// Import Button component - ~0.97 kB
+import { Button } from "sonoma-ui-button";
+import type { ButtonProps } from "sonoma-ui-button";
 
-// Import Card component - ~579 bytes
-import { Card } from "@sonoma-ui/card";
-import type { CardProps } from "@sonoma-ui/card";
+// Import Card component - ~0.58 kB
+import { Card } from "sonoma-ui-card";
+import type { CardProps } from "sonoma-ui-card";
 
 function App() {
   return (
@@ -54,15 +54,15 @@ function App() {
 
 ## Bundle Size Comparison
 
-| Package             | Bundle Size | Description                |
-| ------------------- | ----------- | -------------------------- |
-| `@sonoma-ui/button` | ~969 bytes  | Button component only      |
-| `@sonoma-ui/card`   | ~579 bytes  | Card component only        |
-| Both components     | ~1.5KB      | When using both components |
+| Package            | Bundle Size | Description                |
+| ------------------ | ----------- | -------------------------- |
+| `sonoma-ui-button` | ~0.97 kB    | Button component only      |
+| `sonoma-ui-card`   | ~0.58 kB    | Card component only        |
+| Both components    | ~1.55 kB    | When using both components |
 
 ## Components
 
-### @sonoma-ui/button
+### sonoma-ui-button
 
 A versatile button component with multiple variants and sizes.
 
@@ -78,7 +78,7 @@ A versatile button component with multiple variants and sizes.
 #### Examples
 
 ```tsx
-import { Button } from "@sonoma-ui/button";
+import { Button } from "sonoma-ui-button";
 
 // Primary button
 <Button variant="primary">Primary Button</Button>
@@ -98,7 +98,7 @@ import { Button } from "@sonoma-ui/button";
 <Button disabled>Disabled Button</Button>
 ```
 
-### @sonoma-ui/card
+### sonoma-ui-card
 
 A flexible card component for displaying content with different variants.
 
@@ -112,7 +112,7 @@ A flexible card component for displaying content with different variants.
 #### Examples
 
 ```tsx
-import { Card } from "@sonoma-ui/card";
+import { Card } from "sonoma-ui-card";
 
 // Default card
 <Card>
