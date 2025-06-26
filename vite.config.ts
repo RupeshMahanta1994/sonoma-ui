@@ -36,7 +36,8 @@ export default defineConfig(({ mode }) => {
               'react/jsx-runtime': 'react/jsx-runtime'
             }
           }
-        }
+        },
+        copyPublicDir: false
       }
     } : {}),
     test: {
