@@ -1,11 +1,104 @@
 # Sonoma UI
 
-A modern React UI component library built with TypeScript and Tailwind CSS with tree-# Disabled button
+A modern React UI component library built with TypeScript and Tailwind CSS. Each component is independently packaged and tree-shakable for optimal bundle sizes.
+
+## 🏗️ Monorepo Structure
+
+This project uses a monorepo architecture with independent packages for each component:
+
+- **@sonoma-ui/button** - Button component (~969 bytes)
+- **@sonoma-ui/card** - Card component (~579 bytes)
+- **apps/storybook** - Component documentation and playground
+
+## Installation
+
+Install individual components as needed:
+
+```bash
+# Install specific components
+pnpm add @sonoma-ui/button @sonoma-ui/card
+
+# Or using npm
+npm install @sonoma-ui/button @sonoma-ui/card
+
+# Or using yarn
+yarn add @sonoma-ui/button @sonoma-ui/card
+```
+
+## Usage
+
+### 🌳 Per-Component Imports (Recommended)
+
+Import only the components you need for optimal bundle sizes:
+
+```tsx
+// Import Button component - ~969 bytes
+import { Button } from "@sonoma-ui/button";
+import type { ButtonProps } from "@sonoma-ui/button";
+
+// Import Card component - ~579 bytes
+import { Card } from "@sonoma-ui/card";
+import type { CardProps } from "@sonoma-ui/card";
+
+function App() {
+  return (
+    <Card variant="elevated" padding="lg">
+      <h2>My Card</h2>
+      <Button variant="primary" onClick={() => console.log("Clicked!")}>
+        Click me
+      </Button>
+    </Card>
+  );
+}
+```
+
+## Bundle Size Comparison
+
+| Package             | Bundle Size | Description                |
+| ------------------- | ----------- | -------------------------- |
+| `@sonoma-ui/button` | ~969 bytes  | Button component only      |
+| `@sonoma-ui/card`   | ~579 bytes  | Card component only        |
+| Both components     | ~1.5KB      | When using both components |
+
+## Components
+
+### @sonoma-ui/button
+
+A versatile button component with multiple variants and sizes.
+
+#### Props
+
+- `variant`: `'primary' | 'secondary' | 'outline'` (default: `'primary'`)
+- `size`: `'sm' | 'md' | 'lg'` (default: `'md'`)
+- `disabled`: `boolean` (default: `false`)
+- `onClick`: `() => void`
+- `type`: `'button' | 'submit' | 'reset'` (default: `'button'`)
+- `children`: `React.ReactNode`
+
+#### Examples
+
+```tsx
+import { Button } from "@sonoma-ui/button";
+
+// Primary button
+<Button variant="primary">Primary Button</Button>
+
+// Secondary button
+<Button variant="secondary">Secondary Button</Button>
+
+// Outline button
+<Button variant="outline">Outline Button</Button>
+
+// Different sizes
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+
+// Disabled button
 <Button disabled>Disabled Button</Button>
+```
 
-````
-
-### Card
+### @sonoma-ui/card
 
 A flexible card component for displaying content with different variants.
 
@@ -19,6 +112,8 @@ A flexible card component for displaying content with different variants.
 #### Examples
 
 ```tsx
+import { Card } from "@sonoma-ui/card";
+
 // Default card
 <Card>
   <h3>Card Title</h3>
@@ -46,126 +141,49 @@ A flexible card component for displaying content with different variants.
 <Card className="bg-blue-50" variant="outlined">
   <p>Custom styled card</p>
 </Card>
-```kable selective imports.
-
-## Installation
-
-```bash
-npm install sonoma-ui
-# or
-pnpm add sonoma-ui
-# or
-yarn add sonoma-ui
-````
-
-## Usage
-
-### 🌳 Tree-Shakable Selective Imports (Recommended)
-
-Import only the components you need for smaller bundle sizes:
-
-```tsx
-// Import only Button - ~1.0KB
-import { Button } from "sonoma-ui/button";
-import type { ButtonProps } from "sonoma-ui/button";
-
-// Import only Card - ~0.7KB
-import { Card } from "sonoma-ui/card";
-import type { CardProps } from "sonoma-ui/card";
-
-function App() {
-  return (
-    <Card variant="elevated" padding="lg">
-      <h2>My Card</h2>
-      <Button variant="primary" onClick={() => console.log("Clicked!")}>
-        Click me
-      </Button>
-    </Card>
-  );
-}
-```
-
-### 📦 Full Library Import (Also Supported)
-
-Import all components from the main entry:
-
-```tsx
-import { Button, Card } from "sonoma-ui";
-import type { ButtonProps, CardProps } from "sonoma-ui";
-
-function App() {
-  return (
-    <Card variant="outlined">
-      <Button variant="secondary">Action</Button>
-    </Card>
-  );
-}
-```
-
-## Bundle Size Comparison
-
-| Import Method                               | Bundle Size | Components Included |
-| ------------------------------------------- | ----------- | ------------------- |
-| `import { Button } from 'sonoma-ui/button'` | ~1.0KB      | Button only         |
-| `import { Card } from 'sonoma-ui/card'`     | ~0.7KB      | Card only           |
-| `import { Button, Card } from 'sonoma-ui'`  | ~1.7KB      | Both components     |
-
-## Components
-
-### Button
-
-A versatile button component with multiple variants and sizes.
-
-#### Props
-
-- `variant`: `'primary' | 'secondary' | 'outline'` (default: `'primary'`)
-- `size`: `'sm' | 'md' | 'lg'` (default: `'md'`)
-- `disabled`: `boolean` (default: `false`)
-- `onClick`: `() => void`
-- `type`: `'button' | 'submit' | 'reset'` (default: `'button'`)
-- `children`: `React.ReactNode`
-
-#### Examples
-
-```tsx
-// Primary button
-<Button variant="primary">Primary Button</Button>
-
-// Secondary button
-<Button variant="secondary">Secondary Button</Button>
-
-// Outline button
-<Button variant="outline">Outline Button</Button>
-
-// Different sizes
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
-
-// Disabled button
-<Button disabled>Disabled Button</Button>
 ```
 
 ## Development
 
+This workspace uses pnpm workspaces for managing the monorepo.
+
 ```bash
-# Install dependencies
+# Install dependencies for all packages
 pnpm install
 
-# Start development server
-pnpm dev
+# Build all packages
+pnpm build
 
-# Run tests
+# Test all packages
 pnpm test
 
-# Run Storybook
+# Run Storybook for component documentation
 pnpm storybook
 
-# Build library
-pnpm build:lib
+# Build a specific package
+cd packages/button && pnpm build
+cd packages/card && pnpm build
 
-# Build for production
-pnpm build
+# Test a specific package
+cd packages/button && pnpm test
+cd packages/card && pnpm test
+```
+
+### Adding New Components
+
+1. Create a new package in `packages/your-component`
+2. Follow the structure of existing components (Button, Card)
+3. Add the package to the workspace in `pnpm-workspace.yaml`
+4. Create stories in the Storybook app
+
+## Publishing
+
+Each package can be published independently:
+
+```bash
+# Publish a specific package
+cd packages/button && pnpm publish
+cd packages/card && pnpm publish
 ```
 
 ## License
