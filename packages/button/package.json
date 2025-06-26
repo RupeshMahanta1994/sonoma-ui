@@ -1,5 +1,5 @@
 {
-  "name": "@sonoma-ui/button",
+  "name": "sonoma-ui-button",
   "version": "2.0.0",
   "type": "module",
   "description": "A versatile button component from Sonoma UI",

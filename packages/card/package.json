@@ -1,5 +1,5 @@
 {
-  "name": "@sonoma-ui/card",
+  "name": "sonoma-ui-card",
   "version": "2.0.0",
   "type": "module",
   "description": "A flexible card component from Sonoma UI",
