@@ -16,16 +16,25 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       ...(isLibraryBuild ? [dts({ 
         tsconfigPath: './tsconfig.lib.json',
-        insertTypesEntry: true
+        outDir: 'dist',
+        insertTypesEntry: true,
+        copyDtsFiles: true,
+        include: ['src/**/*'],
+        exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx']
       })] : [])
     ],
     ...(isLibraryBuild ? {
       build: {
         lib: {
-          entry: path.resolve(process.cwd(), 'src/index.ts'),
+          // Multiple entry points for tree-shaking and selective imports
+          entry: {
+            index: path.resolve(process.cwd(), 'src/index.ts'),     // Main entry - all components
+            button: path.resolve(process.cwd(), 'src/button.ts'),   // Button only
+            card: path.resolve(process.cwd(), 'src/card.ts'),       // Card only
+          },
           name: 'SonomaUI',
           formats: ['es', 'cjs'],
-          fileName: (format) => `index.${format === 'es' ? 'es' : 'cjs'}.js`
+          fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'es' : 'cjs'}.js`
         },
         rollupOptions: {
           external: ['react', 'react-dom', 'react/jsx-runtime'],

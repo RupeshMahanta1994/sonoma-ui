@@ -7,6 +7,8 @@
   },
   "include": [
     "src/index.ts",
+    "src/button.ts",
+    "src/card.ts",
     "src/components/**/*"
   ],
   "exclude": [
